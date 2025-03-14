@@ -1,4 +1,4 @@
-# Taller-2
+# Taller 2
 
 ## Preguntas Teoricas
 
@@ -723,12 +723,7 @@ public class GameManager : MonoBehaviour
 
 ## Fotos en Unity
 
-![image](https://github.com/user-attachments/assets/3e93e1db-fa19-4c10-8b2d-059c92263254)
-
-![image](https://github.com/user-attachments/assets/893acdd3-0856-4f07-ae94-8474fb6bb56f)
-
-
-Diaps: https://www.canva.com/design/DAGRIfryQVY/3wV_4fGc8w1mJwjeQxCH9g/edit?utm_content=DAGRIfryQVY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+Diapositivas:
 
   
 ## Instrucciones 
