@@ -723,6 +723,8 @@ public class GameManager : MonoBehaviour
 
 ## Fotos en Unity
 
+- Insertar fotos de unity 
+
 Diapositivas:
 
   
