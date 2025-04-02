@@ -720,7 +720,96 @@ public class GameManager : MonoBehaviour
 - **D (Inversión de Dependencias)**: `Subject` depende de la abstracción `IObserver`, no de implementaciones concretas.
 
 ---
-## logger singleton
+## logger singleton unity
+
+```
+using UnityEngine;
+using System.IO;
+using System;
+
+public class LoggerSingleton : MonoBehaviour
+{
+    private static LoggerSingleton _instance;
+    private string _logFilePath;
+
+    void Awake()
+    {
+        // Configuración del Singleton
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
+
+        // Inicializar sistema de logs
+        _logFilePath = Path.Combine(Application.persistentDataPath, "game_log.txt");
+        Log("Logger inicializado. Ruta: " + _logFilePath);
+    }
+
+    public static void Log(string message)
+    {
+        if (_instance == null) Initialize();
+
+        string formattedMessage = $"{DateTime.Now:HH:mm:ss} - {message}";
+        
+        // Mostrar en consola de Unity
+        Debug.Log(formattedMessage);
+        
+        // Guardar en archivo
+        try
+        {
+            File.AppendAllText(_instance._logFilePath, formattedMessage + Environment.NewLine);
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Error al escribir en log: {e.Message}");
+        }
+    }
+
+    private static void Initialize()
+    {
+        if (_instance != null) return;
+        
+        GameObject loggerObj = new GameObject("LoggerSystem");
+        _instance = loggerObj.AddComponent<LoggerSingleton>();
+    }
+}
+
+```
+
+```
+using UnityEngine;
+
+public class PruebaLogger : MonoBehaviour
+{
+    void Start()
+    {
+       
+        LoggerSingleton.Log("¡El juego ha comenzado!");
+        
+      
+        int vidas = 3;
+        LoggerSingleton.Log($"Jugador iniciado con {vidas} vidas");
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            LoggerSingleton.Log("Tecla SPACE presionada");
+        }
+    }
+}
+```
+![image](https://github.com/user-attachments/assets/0c1d12f8-1c46-4652-97ba-c8026b122f1e)
+
+![image](https://github.com/user-attachments/assets/1169d679-0e3b-453a-9850-f06b472ef6d6)
+
+![image](https://github.com/user-attachments/assets/a345fcac-0dc8-4db9-b341-7e2a38e19cdf)
+
 
 ## Fotos en Unity
 
