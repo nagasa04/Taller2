@@ -794,11 +794,9 @@ public class PruebaLogger : MonoBehaviour
     }
 }
 ```
-![image](https://github.com/user-attachments/assets/0c1d12f8-1c46-4652-97ba-c8026b122f1e)
 
-![image](https://github.com/user-attachments/assets/1169d679-0e3b-453a-9850-f06b472ef6d6)
+![image](https://github.com/user-attachments/assets/ebc39a46-cf3e-457c-b12d-38fbf2bb28ed)
 
-![image](https://github.com/user-attachments/assets/a345fcac-0dc8-4db9-b341-7e2a38e19cdf)
 
 
 ## Fotos en Unity
