@@ -720,6 +720,7 @@ public class GameManager : MonoBehaviour
 - **D (Inversión de Dependencias)**: `Subject` depende de la abstracción `IObserver`, no de implementaciones concretas.
 
 ---
+## logger singleton
 
 ## Fotos en Unity
 
