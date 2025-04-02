@@ -531,8 +531,6 @@ namespace Adapterpayments
 ### **1. Logger (Patrón Singleton)**
 
 ```csharp
-csharp
-Copiar código
 public class Logger
 {
     private static Logger instance = null;
@@ -583,8 +581,6 @@ El patrón **Observer**, que permite notificar a varios objetos cuando el estado
 ### **Interfaz `IObserver`**:
 
 ```csharp
-csharp
-Copiar código
 public interface IObserver
 {
     void OnNotify(string message);
@@ -597,8 +593,6 @@ public interface IObserver
 ### **Clase `Subject`**:
 
 ```csharp
-csharp
-Copiar código
 public class Subject
 {
     private List<IObserver> observers = new List<IObserver>();
@@ -630,8 +624,6 @@ public class Subject
 ### **Clase `ConcreteObserver`**:
 
 ```csharp
-csharp
-Copiar código
 public class ConcreteObserver : MonoBehaviour, IObserver
 {
     public void OnNotify(string message)
@@ -656,8 +648,6 @@ public class ConcreteObserver : MonoBehaviour, IObserver
 ### **Clase `GameManager` (Ejemplo de uso del Logger y Observer en Unity)**:
 
 ```csharp
-csharp
-Copiar código
 public class GameManager : MonoBehaviour
 {
     private Subject subject;
