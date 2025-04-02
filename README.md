@@ -726,7 +726,7 @@ public class GameManager : MonoBehaviour
 - Insertar fotos de unity 
 
 Diapositivas:
-
+- 
   
 ## Instrucciones 
 (Trate de organizar todo lo que el profesor puso en la pagina)
