@@ -1073,6 +1073,7 @@ public class GameController : MonoBehaviour
     }
 }
 ```
+![image](https://github.com/user-attachments/assets/06c9b392-5b89-42c4-b1d4-3e8f32d8b6b6)
 
 
 ## Fotos en Unity
