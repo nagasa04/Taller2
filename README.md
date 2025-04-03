@@ -903,6 +903,177 @@ public class ObserverTester : MonoBehaviour
 ![image](https://github.com/user-attachments/assets/2fcb1dd8-5083-431d-8982-ecb45e20366a)
 ![image](https://github.com/user-attachments/assets/0fcaf2f5-4058-4304-8b66-19cf4d926d88)
 
+## Observer + Decorador
+
+### Player.cs
+```
+csharp
+Copiar
+Editar
+using System;
+using UnityEngine;
+
+public class Player : MonoBehaviour
+{
+    public delegate void PowerChangedHandler(float newPower);
+    public event PowerChangedHandler PowerChanged;
+
+    private float power = 50f;
+
+    public float Power
+    {
+        get { return power; }
+        set
+        {
+            if (power != value)
+            {
+                power = value;
+                OnPowerChanged(power);
+            }
+        }
+    }
+
+    protected virtual void OnPowerChanged(float newPower)
+    {
+        PowerChanged?.Invoke(newPower);
+    }
+}
+```
+### PowerObserver.cs
+```
+csharp
+Copiar
+Editar
+using UnityEngine;
+
+public class PowerObserver : MonoBehaviour
+{
+    private Player player;
+
+    private void OnEnable()
+    {
+        player = FindObjectOfType<Player>();
+        if (player != null)
+        {
+            player.PowerChanged += OnPowerChanged;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (player != null)
+        {
+            player.PowerChanged -= OnPowerChanged;
+        }
+    }
+
+    private void OnPowerChanged(float newPower)
+    {
+        Debug.Log($"El poder del jugador ha cambiado a: {newPower}");
+    }
+}
+```
+### IPlayer.cs
+```
+csharp
+Copiar
+Editar
+public interface IPlayer
+{
+    float GetPower();
+}
+```
+### PlayerBase.cs
+```
+csharp
+Copiar
+Editar
+using UnityEngine;
+
+public class PlayerBase : MonoBehaviour, IPlayer
+{
+    private float power = 50f;
+
+    public float GetPower()
+    {
+        return power;
+    }
+
+    public void SetPower(float newPower)
+    {
+        power = newPower;
+    }
+}
+```
+### PlayerDecorator.cs
+```
+csharp
+Copiar
+Editar
+public abstract class PlayerDecorator : IPlayer
+{
+    protected IPlayer player;
+
+    public PlayerDecorator(IPlayer player)
+    {
+        this.player = player;
+    }
+
+    public virtual float GetPower()
+    {
+        return player.GetPower();
+    }
+}
+```
+### PowerUpDecorator.cs
+```
+csharp
+Copiar
+Editar
+public class PowerUpDecorator : PlayerDecorator
+{
+    private float powerBonus;
+
+    public PowerUpDecorator(IPlayer player, float powerBonus) : base(player)
+    {
+        this.powerBonus = powerBonus;
+    }
+
+    public override float GetPower()
+    {
+        return player.GetPower() + powerBonus;
+    }
+}
+```
+### GameController.cs
+```
+csharp
+Copiar
+Editar
+using UnityEngine;
+
+public class GameController : MonoBehaviour
+{
+    void Start()
+    {
+        // --- OBSERVER ---
+        Player player = new GameObject("Player").AddComponent<Player>();
+        PowerObserver observer = new GameObject("PowerObserver").AddComponent<PowerObserver>();
+        player.Power = 75f;  // Cambia el poder para disparar el evento
+
+        // --- DECORATOR ---
+        PlayerBase basePlayer = new GameObject("BasePlayer").AddComponent<PlayerBase>();
+        PowerUpDecorator powerUp = new PowerUpDecorator(basePlayer, 25f);
+
+        Debug.Log($"Poder original del jugador: {basePlayer.GetPower()}");
+        Debug.Log($"Poder del jugador con power-up: {powerUp.GetPower()}");
+
+        // Cambiar el poder para ver cómo reacciona el Observer
+        player.Power = 100f;
+    }
+}
+```
+
 
 ## Fotos en Unity
 
