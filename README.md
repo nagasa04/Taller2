@@ -797,6 +797,111 @@ public class PruebaLogger : MonoBehaviour
 
 ![image](https://github.com/user-attachments/assets/ebc39a46-cf3e-457c-b12d-38fbf2bb28ed)
 
+## Observer
+
+### Subject
+```
+using UnityEngine;
+using System;
+
+public class Subject : MonoBehaviour
+{
+    // Evento que notifica cuando el estado cambia
+    public event Action<string> OnStateChanged;
+
+    private string _currentState;
+
+    // Propiedad para modificar el estado
+    public string CurrentState
+    {
+        get => _currentState;
+        set
+        {
+            if (_currentState != value)
+            {
+                _currentState = value;
+                OnStateChanged?.Invoke(_currentState); // Notifica a los observadores
+                Debug.Log($"Subject: Estado cambiado a '{_currentState}'");
+            }
+        }
+    }
+
+    // Métodos para probar desde el Inspector
+    [ContextMenu("Cambiar a Estado 1")]
+    private void SetState1() => CurrentState = "Estado 1";
+
+    [ContextMenu("Cambiar a Estado 2")]
+    private void SetState2() => CurrentState = "Estado 2";
+}
+```
+
+### Observer
+```
+using UnityEngine;
+
+public class Observer : MonoBehaviour
+{
+    [Tooltip("Nombre identificador del observador")]
+    public string observerName = "Observador";
+
+    [Tooltip("Arrastra el GameObject que tiene el componente Subject")]
+    public Subject subjectToObserve;
+
+    private void Start()
+    {
+        if (subjectToObserve != null)
+        {
+            // Suscribirse al evento
+            subjectToObserve.OnStateChanged += HandleStateChange;
+            Debug.Log($"{observerName} listo para recibir notificaciones.");
+        }
+        else
+        {
+            Debug.LogError($"{observerName} no tiene un Subject asignado!", gameObject);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // Desuscribirse al destruirse 
+        if (subjectToObserve != null)
+            subjectToObserve.OnStateChanged -= HandleStateChange;
+    }
+
+    // Método que se ejecuta cuando el Subject notifica un cambio
+    private void HandleStateChange(string newState)
+    {
+        Debug.Log($"{observerName}: ¡El estado ahora es '{newState}'!");
+    }
+}
+```
+### ObserverTester
+```
+using UnityEngine;
+
+public class ObserverTester : MonoBehaviour
+{
+    [SerializeField] private Subject subject;
+    [SerializeField] private float delayBetweenChanges = 2f;
+
+    private void Start()
+    {
+        if (subject == null)
+            subject = FindObjectOfType<Subject>();
+
+        InvokeRepeating(nameof(ChangeState), 1f, delayBetweenChanges);
+    }
+
+    private void ChangeState()
+    {
+        string randomState = "Estado " + Random.Range(1, 4);
+        subject.CurrentState = randomState;
+    }
+}
+```
+![image](https://github.com/user-attachments/assets/65209fb9-ac33-49d5-95c8-e16a8eba927e)
+![image](https://github.com/user-attachments/assets/2fcb1dd8-5083-431d-8982-ecb45e20366a)
+![image](https://github.com/user-attachments/assets/0fcaf2f5-4058-4304-8b66-19cf4d926d88)
 
 
 ## Fotos en Unity
