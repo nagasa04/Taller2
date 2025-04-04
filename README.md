@@ -1191,12 +1191,6 @@ public class StrategyTester : MonoBehaviour
 ```
 
 
-## Diferencias en cada implementación del patrón:
-
-Unity: Utiliza componentes y está integrado en un entorno de juego, facilitando la visualización y interacción
-
-C# Puro: Más enfocado en la lógica y estructuras de datos, aplicable en aplicaciones de software más tradicionales como sistemas financieros o de gestión
-
 
 
 ## Diapositivas:
