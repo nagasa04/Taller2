@@ -1075,6 +1075,122 @@ public class GameController : MonoBehaviour
 ```
 ![image](https://github.com/user-attachments/assets/06c9b392-5b89-42c4-b1d4-3e8f32d8b6b6)
 
+
+## Strategy
+
+### Interfaz IAttackStrategy.cs
+
+```
+public interface IAttackStrategy 
+{
+    void Attack();
+}
+```
+
+### NormalAttack.cs
+
+```
+public class NormalAttack : IAttackStrategy 
+{
+    public void Attack() 
+    {
+        Debug.Log("Ataque normal: 10 de daño");
+    }
+}
+```
+
+### StrongAttack.cs
+
+```
+public class StrongAttack : IAttackStrategy 
+{
+    public void Attack() 
+    {
+        Debug.Log("Ataque FUERTE: 25 de daño (gasta 20% de energía)");
+    }
+}
+
+```
+
+### SpecialAttack.cs
+
+```
+public class SpecialAttack : IAttackStrategy 
+{
+    public void Attack() 
+    {
+        Debug.Log("Ataque ESPECIAL: 50 de daño (gasta 1 poción)");
+    }
+}
+
+```
+
+
+### Player.cs
+
+```
+
+using UnityEngine;
+
+public class Player : MonoBehaviour
+{
+    private IAttackStrategy _currentStrategy;
+
+    // Cambia la estrategia dinámicamente
+    public void SetStrategy(IAttackStrategy strategy) 
+    {
+        _currentStrategy = strategy;
+    }
+
+    // Ejecuta el ataque según la estrategia actual
+    public void PerformAttack() 
+    {
+        if (_currentStrategy != null)
+            _currentStrategy.Attack();
+        else
+            Debug.LogError("¡No hay estrategia de ataque asignada!");
+    }
+}
+
+```
+
+### StrategyTester.cs
+
+```
+using UnityEngine;
+
+public class StrategyTester : MonoBehaviour
+{
+    private Player _player;
+
+    private void Start() 
+    {
+        _player = FindObjectOfType<Player>();
+        Debug.Log("Prueba de Estrategias: Usa las teclas 1 (Normal), 2 (Fuerte), 3 (Especial)");
+    }
+
+    private void Update() 
+    {
+        if (Input.GetKeyDown(KeyCode.1))
+        {
+            _player.SetStrategy(new NormalAttack());
+            _player.PerformAttack();
+        }
+        else if (Input.GetKeyDown(KeyCode.2))
+        {
+            _player.SetStrategy(new StrongAttack());
+            _player.PerformAttack();
+        }
+        else if (Input.GetKeyDown(KeyCode.3))
+        {
+            _player.SetStrategy(new SpecialAttack());
+            _player.PerformAttack();
+        }
+    }
+}
+```
+
+
 ## Diferencias en cada implementación del patrón:
 
 Unity: Utiliza componentes y está integrado en un entorno de juego, facilitando la visualización y interacción
