@@ -15,7 +15,7 @@ I - Principio de Segregación de Interfaces (ISP): Es preferible contar con vari
 
 D - Principio de Inversión de Dependencias (DIP): Las clases de nivel alto no deben depender directamente de las de nivel bajo, sino de abstracciones (interfaces). Esto favorece un diseño más modular y desacoplado.
 
-   Los principios SOLID contribuyen a un buen diseño porque promueven un código modular, flexible y mantenible, es decir, un código más limpio, fácil de mantener y con menos acoplamiento; lo que reduce la posibilidad de errores al modificar o extender el sistema. Ademas, facilitan la implementación de nuevas características sin introducir errores y mejoran la reutilización y legibilidad del código.
+En conjunto, estos principios fomentan un diseño de software más organizado y sólido, facilitando la lectura del código, su mantenimiento, reutilización y ampliación sin que se generen fallos o dependencias innecesarias.
 
 ### 2. **Explica cómo el patrón Singleton asegura que solo haya una instancia de una clase y cuáles son sus posibles usos.**
 El **patrón Singleton** restringe la creación de objetos de una clase a una única instancia, asegurando que todas las llamadas a la clase retornen la misma instancia. Esto se logra mediante:
