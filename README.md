@@ -1075,7 +1075,13 @@ public class GameController : MonoBehaviour
 ```
 ![image](https://github.com/user-attachments/assets/06c9b392-5b89-42c4-b1d4-3e8f32d8b6b6)
 
+## Diferencias en cada implementación del patrón:
+
+Unity: Utiliza componentes y está integrado en un entorno de juego, facilitando la visualización y interacción
+
+C# Puro: Más enfocado en la lógica y estructuras de datos, aplicable en aplicaciones de software más tradicionales como sistemas financieros o de gestión
+
 
 
 ## Diapositivas:
-- Insertar
+- https://www.canva.com/design/DAGjn48JMiA/a7oWOR4UbE6piVyIGOry_Q/edit?utm_content=DAGjn48JMiA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
