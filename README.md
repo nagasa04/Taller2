@@ -3,17 +3,17 @@
 ## Preguntas Teoricas
 
 ### 1. **¿Qué son los principios SOLID y cómo contribuyen a un buen diseño orientado a objetos?**
-Los principios SOLID son un conjunto de cinco principios de diseño que buscan mejorar la calidad, flexibilidad y mantenibilidad del software orientado a objetos:
+Los principios SOLID son un conjunto de cinco directrices que ayudan a diseñar software orientado a objetos de manera más clara, flexible y fácil de mantener:
 
-- **S**: *Single Responsibility Principle (SRP)* - Cada clase debe tener una única responsabilidad o razón para cambiar. Esto facilita la comprensión y mantenimiento de cada clase.
-  
-- **O**: *Open/Closed Principle (OCP)* - Las clases deben estar abiertas a la extensión pero cerradas a la modificación. Esto se logra mediante la creación de clases base o interfaces que permitan agregar nuevas funcionalidades sin modificar el código existente.
-  
-- **L**: *Liskov Substitution Principle (LSP)* - Los objetos de una subclase deben ser sustituibles por objetos de la clase base sin alterar el comportamiento del programa. Esto asegura que las clases derivadas respeten el contrato de la clase base.
-  
-- **I**: *Interface Segregation Principle (ISP)* - Es mejor tener varias interfaces específicas que una sola interfaz general. Esto permite que los clientes dependan solo de los métodos que realmente utilizan.
-  
-- **D**: *Dependency Inversion Principle (DIP)* - Las clases de alto nivel no deben depender de clases de bajo nivel, sino de abstracciones. Esto reduce la dependencia entre módulos y facilita la creación de sistemas más modulares.
+S - Principio de Responsabilidad Única (SRP): Cada clase debe encargarse de una sola tarea o tener un único motivo para cambiar. Esto hace que el código sea más comprensible y sencillo de modificar.
+
+O - Principio de Abierto/Cerrado (OCP): Las clases deben poder extenderse sin necesidad de alterar su código original. Esto se logra mediante herencia o interfaces, permitiendo añadir nuevas funcionalidades sin romper lo existente.
+
+L - Principio de Sustitución de Liskov (LSP): Las subclases deben poder usarse como si fueran la clase base sin afectar el correcto funcionamiento del programa. Esto garantiza coherencia y compatibilidad en la jerarquía de clases.
+
+I - Principio de Segregación de Interfaces (ISP): Es preferible contar con varias interfaces pequeñas y específicas, en lugar de una sola con muchas responsabilidades. Así, los componentes solo dependen de lo que realmente usan.
+
+D - Principio de Inversión de Dependencias (DIP): Las clases de nivel alto no deben depender directamente de las de nivel bajo, sino de abstracciones (interfaces). Esto favorece un diseño más modular y desacoplado.
 
    Los principios SOLID contribuyen a un buen diseño porque promueven un código modular, flexible y mantenible, es decir, un código más limpio, fácil de mantener y con menos acoplamiento; lo que reduce la posibilidad de errores al modificar o extender el sistema. Ademas, facilitan la implementación de nuevas características sin introducir errores y mejoran la reutilización y legibilidad del código.
 
