@@ -528,7 +528,7 @@ namespace Adapterpayments
 ```
 # Programa Unity
 
-### **1. Logger (Patrón Singleton)**
+### **1. Logger (Singleton)**
 
 ```csharp
 public class Logger
