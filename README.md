@@ -907,9 +907,8 @@ public class ObserverTester : MonoBehaviour
 
 ### Player.cs
 ```
-csharp
-Copiar
-Editar
+
+
 using System;
 using UnityEngine;
 
@@ -941,9 +940,7 @@ public class Player : MonoBehaviour
 ```
 ### PowerObserver.cs
 ```
-csharp
-Copiar
-Editar
+
 using UnityEngine;
 
 public class PowerObserver : MonoBehaviour
@@ -975,9 +972,7 @@ public class PowerObserver : MonoBehaviour
 ```
 ### IPlayer.cs
 ```
-csharp
-Copiar
-Editar
+
 public interface IPlayer
 {
     float GetPower();
@@ -985,9 +980,7 @@ public interface IPlayer
 ```
 ### PlayerBase.cs
 ```
-csharp
-Copiar
-Editar
+
 using UnityEngine;
 
 public class PlayerBase : MonoBehaviour, IPlayer
@@ -1007,9 +1000,7 @@ public class PlayerBase : MonoBehaviour, IPlayer
 ```
 ### PlayerDecorator.cs
 ```
-csharp
-Copiar
-Editar
+
 public abstract class PlayerDecorator : IPlayer
 {
     protected IPlayer player;
@@ -1027,9 +1018,7 @@ public abstract class PlayerDecorator : IPlayer
 ```
 ### PowerUpDecorator.cs
 ```
-csharp
-Copiar
-Editar
+
 public class PowerUpDecorator : PlayerDecorator
 {
     private float powerBonus;
@@ -1047,9 +1036,7 @@ public class PowerUpDecorator : PlayerDecorator
 ```
 ### GameController.cs
 ```
-csharp
-Copiar
-Editar
+
 using UnityEngine;
 
 public class GameController : MonoBehaviour
