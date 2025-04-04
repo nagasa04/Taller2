@@ -3,7 +3,7 @@
 ## Preguntas Teoricas
 
 ### 1. **¿Qué son los principios SOLID y cómo contribuyen a un buen diseño orientado a objetos?**
-Los principios SOLID son un conjunto de cinco directrices que ayudan a diseñar software orientado a objetos de manera más clara, flexible y fácil de mantener:
+     Los principios SOLID son un conjunto de cinco directrices que ayudan a diseñar software orientado a objetos de manera más clara, flexible y fácil de mantener:
 
 S - Principio de Responsabilidad Única (SRP): Cada clase debe encargarse de una sola tarea o tener un único motivo para cambiar. Esto hace que el código sea más comprensible y sencillo de modificar.
 
@@ -15,7 +15,7 @@ I - Principio de Segregación de Interfaces (ISP): Es preferible contar con vari
 
 D - Principio de Inversión de Dependencias (DIP): Las clases de nivel alto no deben depender directamente de las de nivel bajo, sino de abstracciones (interfaces). Esto favorece un diseño más modular y desacoplado.
 
-En conjunto, estos principios fomentan un diseño de software más organizado y sólido, facilitando la lectura del código, su mantenimiento, reutilización y ampliación sin que se generen fallos o dependencias innecesarias.
+     En conjunto, estos principios fomentan un diseño de software más organizado y sólido, facilitando la lectura del código, su mantenimiento, reutilización y ampliación sin que se generen fallos o dependencias innecesarias.
 
 ### 2. **Explica cómo el patrón Singleton asegura que solo haya una instancia de una clase y cuáles son sus posibles usos.**
 El **patrón Singleton** restringe la creación de objetos de una clase a una única instancia, asegurando que todas las llamadas a la clase retornen la misma instancia. Esto se logra mediante:
